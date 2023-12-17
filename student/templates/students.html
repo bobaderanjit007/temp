@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="container p-4">
+    <h1 class="text-center m-3">Student Information</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Mobile</th>
+              <th scope="col">Update</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for student in students %}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{student.name}}</td>
+                <td>{{student.email}}</td>
+                <td>{{student.mobile}}</td>
+                <td><a href="/update/{{student.id}}" class="btn btn-sm btn-primary">Update</a></td>
+                <td><a href="/delete/{{student.id}}" class="btn btn-sm btn-danger">Delete</a></td>
+              </tr>   
+            {% empty %}
+              <tr>
+                <td colspan="6"> <h2 class="text-center">No Result Found...!</h2> </td>
+              </tr>        
+
+          {% endfor %}
+          </tbody>
+    </table>
+  </div>
+{% endblock content %}
